@@ -1,0 +1,35 @@
+{
+  "name": "cocam-backup",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One-click Cloudflare Worker that backs up every project, photo, video, document and checklist from CompanyCam into a single R2 bucket. Independent, unofficial tool.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "cf-typegen": "wrangler types",
+    "test": "node test/render.test.js && node test/throttle.test.js && node test/budget.test.js",
+    "check": "tsc --noEmit && npm test"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260918.1",
+    "typescript": "^5.6.3",
+    "wrangler": "^4.20.0"
+  },
+  "cloudflare": {
+    "label": "CoCam Backup",
+    "products": [
+      "Workers",
+      "R2",
+      "Durable Objects"
+    ],
+    "bindings": {
+      "DASHBOARD_PASSWORD": {
+        "description": "Choose a password for the backup's web page. You will type it in each time you open the page, and it is what stops anyone who finds the URL from reading your CompanyCam data. Generate one with `openssl rand -hex 16` if you like. Your CompanyCam API key is not needed here \u2014 the page asks for it after you sign in."
+      },
+      "ARCHIVE": {
+        "description": "The R2 bucket your backup is written into. Leave the suggested name unless you have a reason to change it \u2014 if you do, set the ARCHIVE_BUCKET variable to match so the dashboard links to the right place. R2 must already be enabled on your account."
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+# Password for the backup's web page. You choose it; you will type it in each
+# time you open the page. Your CompanyCam API key is not set here - the page
+# asks for it once you are in.
+DASHBOARD_PASSWORD=""

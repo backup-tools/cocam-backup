@@ -1,0 +1,12 @@
+node_modules/
+.wrangler/
+.dev.vars
+.env
+dist/
+*.log
+worker-configuration.d.ts
+
+# Local credentials and working data - never commit
+INTERNAL/
+.keys/
+.keys
